@@ -1,5 +1,5 @@
  
-unsigned long lastbutt;
+unsigned long lastbutton;
 
 
 void clear(){
@@ -171,7 +171,7 @@ void display_num_right(int number){
 
 void setup() {
   Serial.begin(9600);
-  lastbutt = 0;
+  lastbutton = 0;
   pinMode(2, INPUT);
   pinMode(3, OUTPUT);
   pinMode(4, OUTPUT);
@@ -197,16 +197,16 @@ void loop() {
   bool value = digitalRead(2);
   if (value == 0) {
     Serial.println("hello!");
-    lastbutt = millis()*120;
+    lastbutton = millis()*120;
 
   } else {
     Serial.println("oh no");
   }
-  unsigned long timesbutt = millis()*120-lastbutt;
-  int mins = floor(timesbutt/60000);
+  unsigned long timesbutton = millis()*120-lastbutton;
+  int mins = floor(timesbutton/60000);
 
   if ((60-mins) <= 0) {
-    if (((int) floor(timesbutt/12000))%2 == 0) {
+    if (((int) floor(timesbutton/12000))%2 == 0) {
       digitalWrite(A7, HIGH);
     } else {
       digitalWrite(A7, LOW);
